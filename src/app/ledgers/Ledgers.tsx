@@ -44,7 +44,7 @@ const JournalsCarousel: React.FC<JournalsCarouselProps> = ({ onJournalClick }) =
       ) : journals?.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-full">
           <h3 className="text-2xl font-bold tracking-tight">
-            You don't have any generated Trial Balance.
+            You don&apos;t have any generated Trial Balance.
           </h3>
         </div>
       ) : (
