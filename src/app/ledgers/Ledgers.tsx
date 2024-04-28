@@ -15,7 +15,6 @@ import { useEffect, useState } from "react";
 
 interface JournalsCarouselProps {
   onJournalClick: (journal: any) => void;
-  openModal: () => void;
 }
 
 const JournalsCarousel: React.FC<JournalsCarouselProps> = ({ onJournalClick }) => {

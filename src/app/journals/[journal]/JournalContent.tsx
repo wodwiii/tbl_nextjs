@@ -48,7 +48,7 @@ interface Journal {
   entries: Entry[];
 }
 
-export function JournalTable({ journal }: { journal: Journal }) {
+export function JournalTable({ journal }: { journal: Journal | null}) {
   const router = useRouter();
   const [uniqueTransactions, setUniqueTransactions] = useState<Entry[]>([]);
   const [date, setDate] = React.useState<Date>();
@@ -60,7 +60,7 @@ export function JournalTable({ journal }: { journal: Journal }) {
   };
   useEffect(() => {
     const groupedEntries: Record<string, Entry[]> = {};
-    journal.entries.forEach((entry) => {
+    journal?.entries.forEach((entry) => {
       const key = entry.Date;
       if (!groupedEntries[key]) {
         groupedEntries[key] = [];
@@ -83,7 +83,7 @@ export function JournalTable({ journal }: { journal: Journal }) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ journalId: journal._id }),
+        body: JSON.stringify({ journalId: journal?._id }),
       });
       if (!response.ok) {
         throw new Error(`Failed to generate trial balance: ${response.status} ${response.statusText}`);
@@ -130,7 +130,7 @@ export function JournalTable({ journal }: { journal: Journal }) {
     const requestBody = JSON.stringify({ entries: transactionEntries });
 
     fetch(
-      "https://tbl-nodeserver.vercel.app/api/journals/entry/" + journal._id,
+      "https://tbl-nodeserver.vercel.app/api/journals/entry/" + journal?._id,
       {
         method: "PUT",
         headers: {

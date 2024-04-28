@@ -23,22 +23,22 @@ interface TrialBalance {
   name: string;
   _id: string;
   entries: Entry[];
-  Total_debit: number;
-  Total_credit: number;
+  Total_debit: any;
+  Total_credit: any;
 }
 
-export function JournalTable({ trialbalance }: { trialbalance: TrialBalance }) {
-  const tb = trialbalance.entries;
+export function JournalTable({ trialbalance }: { trialbalance: any }) {
+  const tb = trialbalance?.entries;
   const [excelData, setExcelData] = useState(null);
   useEffect(() => {
     try {
         // Convert the trial balance data to an array of objects
-        const dataArray = trialbalance.entries.map(entry => ({
+        const dataArray = trialbalance?.entries.map((entry: { Account_Title: any; Debit_amount: any; Credit_Amount: any; }) => ({
           'Account_Title': entry.Account_Title,
           'Debit_amount': entry.Debit_amount,
           'Credit_Amount': entry.Credit_Amount,
         }));
-        dataArray.push({ 'Account_Title': '', 'Debit_amount': trialbalance.Total_debit, 'Credit_Amount': trialbalance.Total_credit });
+        dataArray.push({ 'Account_Title': '', 'Debit_amount': trialbalance?.Total_debit, 'Credit_Amount': trialbalance?.Total_credit });
         const worksheet = XLSX.utils.json_to_sheet(dataArray);
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, 'Trial Balance');
@@ -75,7 +75,7 @@ export function JournalTable({ trialbalance }: { trialbalance: TrialBalance }) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {tb.map((entries) => (
+          {tb.map((entries:any) => (
             <TableRow key={entries._id}>
               <TableCell className="font-medium text-left">
                 {entries.Account_Title}
