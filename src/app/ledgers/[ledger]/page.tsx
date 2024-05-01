@@ -50,7 +50,7 @@ const Journal = ({ params }:any) => {
 
     return (
         
-      <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+      <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] bg-slate-300">
       <div className="hidden border-r bg-muted/40 md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
@@ -58,7 +58,7 @@ const Journal = ({ params }:any) => {
               <div className="w-12 rounded ">
                 <Image src={logo} alt={""} />
               </div>
-              <span className="">Trial Balance Ledger</span>
+              <span className="">Journal & Trial Balance</span>
             </Link>
           </div>
           <div className="flex-1">
@@ -75,7 +75,7 @@ const Journal = ({ params }:any) => {
                 className="flex mt-2 items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <NotebookText className="h-4 w-4" />
-                Ledgers
+                Trial Balance
               </Link>
               <Link
                 href="#"
@@ -121,7 +121,7 @@ const Journal = ({ params }:any) => {
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
                   <NotebookText className="h-5 w-5" />
-                  Ledgers
+                  Trial Balance
                 </Link>
                 <Link
                   href="#"
@@ -155,7 +155,7 @@ const Journal = ({ params }:any) => {
             </DropdownMenu>
           </div>
         </header>
-        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 bg-gradient-to-l from-slate-200 via-slate-50 to-slate-200">
           <div className="flex items-center">
             <h1 className="text-lg font-semibold md:text-2xl">Trial Balance</h1>
           </div>

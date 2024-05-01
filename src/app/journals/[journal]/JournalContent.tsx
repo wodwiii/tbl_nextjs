@@ -217,6 +217,30 @@ export function JournalTable({ journal }: { journal: Journal | null}) {
     }
   };
 
+  const handleDelete = (transactionId: string) => {
+    fetch(
+      `https://tbl-nodeserver.vercel.app/api/journals/entries/${transactionId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      }
+    )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to delete transaction");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Transaction deleted successfully:", data);
+    })
+    .catch((error) => {
+      console.error("Error deleting transaction:", error);
+    });
+  };
+
   return (
     <div className="relative mb-24">
       <Dialog>
@@ -339,6 +363,9 @@ export function JournalTable({ journal }: { journal: Journal | null}) {
                         </div>
                         <DialogFooter>
                           <DialogClose>
+                            <Button variant="destructive" onClick={() => handleDelete(transaction._id)}>
+                              Delete
+                            </Button>
                             <Button
                               onClick={() => handleEditRow(transaction._id)}
                             >

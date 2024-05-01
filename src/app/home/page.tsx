@@ -1,13 +1,7 @@
 "use client";
 import Link from "next/link";
-import {
-  CircleUser,
-  Home,
-  Menu,
-  NotebookText,
-  Info,
-} from "lucide-react";
-
+import { CircleUser, Home, Menu, NotebookText, Info } from "lucide-react";
+import bg from "../../../public/bg.png";
 import logo from "../../../public/logo.png";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -28,20 +22,20 @@ export default function Dashboard() {
   const handleOpenJournal = (journal: any) => {
     router.push(`/journals/${journal}`);
   };
-  const handleLogout = () =>{
+  const handleLogout = () => {
     localStorage.removeItem("id");
-    router.push('/');
-  }
+    router.push("/");
+  };
   return (
-    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] bg-slate-300">
       <div className="hidden border-r bg-muted/40 md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-              <div className="w-12 rounded ">
-                <Image src={logo} alt={""} />
-              </div>
+            <div className="w-12 rounded ">
+              <Image src={logo} alt={""} />
+            </div>
             <Link href="/" className="flex items-center gap-2 font-semibold">
-              <span className="ml-2">Trial Balance Ledger</span>
+              <span className="ml-2">Journal & Trial Balance</span>
             </Link>
           </div>
           <div className="flex-1">
@@ -58,7 +52,7 @@ export default function Dashboard() {
                 className="flex mt-2 items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <NotebookText className="h-4 w-4" />
-                Ledgers
+                Trial Balance
               </Link>
               <Link
                 href="#"
@@ -104,7 +98,7 @@ export default function Dashboard() {
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
                   <NotebookText className="h-5 w-5" />
-                  Ledgers
+                  Trial Balance
                 </Link>
                 <Link
                   href="#"
@@ -133,20 +127,22 @@ export default function Dashboard() {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout}>
+                  Logout
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
         </header>
-        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-          <div className="flex items-center">
-            <h1 className="text-lg font-semibold md:text-2xl">Home</h1>
-          </div>
-          <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
-            <div className="items-center gap-1 text-center">
-              <Journals onJournalClick={handleOpenJournal} />
+        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6 bg-gradient-to-l from-slate-200 via-slate-50 to-slate-200">
+            <div className="flex items-center">
+              <h1 className="text-lg font-semibold md:text-2xl">Home</h1>
             </div>
-          </div>
+            <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
+              <div className="items-center gap-1 text-center">
+                <Journals onJournalClick={handleOpenJournal} />
+              </div>
+            </div>
         </main>
       </div>
     </div>

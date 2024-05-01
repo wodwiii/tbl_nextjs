@@ -12,9 +12,10 @@ export default function Home() {
     router.push('/home');
   }
   return (
-    <main className="h-screen flex items-center justify-center px-4">
+    <main className="h-screen flex items-center justify-center px-4 bg-gradient-to-l from-slate-300 via-slate-50 to-slate-300">
       <Toaster/>
       <LoginForm/>
+
     </main>
   );
 }

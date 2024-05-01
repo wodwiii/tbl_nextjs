@@ -53,25 +53,27 @@ export function LoginForm() {
     }
   };
 
+  const signUp = () => {
+    router.push("/signup");
+  };
+
   return (
     <>
-      <Card className="w-full max-w-sm">
+      <Card className="w-full max-w-sm ">
         <form onSubmit={handleLogin}>
           <CardHeader>
             <div className="flex items-center mb-8">
-            <div className="w-16 rounded">
+              <div className="w-16 rounded">
                 <Image src={logo} alt={""} />
               </div>
               <div className="font-bold text-xl mt-4 ml-4 max-w-[150px]">
-              <div className="text-xs font-light">
-                <p>Welcome to</p>
-              </div>
-                <p>Trial Balance Ledger App</p>
+                <div className="text-xs font-light">
+                  <p>Welcome to</p>
+                </div>
+                <p>Journal & Trial Balance App</p>
               </div>
             </div>
-            <CardTitle className="text-2xl">
-              Login
-            </CardTitle>
+            <CardTitle className="text-2xl">Login</CardTitle>
             <CardDescription>
               Enter your account below to login.
             </CardDescription>
@@ -100,9 +102,18 @@ export function LoginForm() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="w-full" type="submit">
-              Sign in
-            </Button>
+            <div className="flex-1">
+              <Button className="w-full" type="submit">
+                Sign in
+              </Button>
+              <Button
+                variant="secondary"
+                className="w-full mt-2"
+                onClick={signUp}
+              >
+                Sign up
+              </Button>
+            </div>
           </CardFooter>
         </form>
       </Card>
