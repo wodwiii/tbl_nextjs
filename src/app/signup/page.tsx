@@ -78,11 +78,11 @@ export default function SignUpForm() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="grid gap-2">
                   <Label htmlFor="firstName">First name</Label>
-                  <Input id="firstName" placeholder="Max" required onChange={handleInputChange} />
+                  <Input id="firstName" placeholder="John" required onChange={handleInputChange} />
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="lastName">Last name</Label>
-                  <Input id="lastName" placeholder="Robinson" required onChange={handleInputChange} />
+                  <Input id="lastName" placeholder="Doe" required onChange={handleInputChange} />
                 </div>
               </div>
               <div className="grid gap-2">
@@ -90,7 +90,7 @@ export default function SignUpForm() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  placeholder="example@tbjournal.com"
                   required
                   onChange={handleInputChange}
                 />

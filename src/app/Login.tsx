@@ -16,6 +16,7 @@ import { ToastAction } from "@/components/ui/toast";
 import { useRouter } from "next/navigation";
 import logo from "../../public/logo.png";
 import Image from "next/image";
+import { PasswordInput } from "@/components/ui/password-input";
 
 export function LoginForm() {
   const [email, setEmail] = useState("");
@@ -84,7 +85,7 @@ export function LoginForm() {
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="example@tbjournal.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -92,13 +93,11 @@ export function LoginForm() {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
+              <PasswordInput id="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+                required/>
             </div>
           </CardContent>
           <CardFooter>

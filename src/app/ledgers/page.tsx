@@ -94,14 +94,14 @@ export default function Ledger() {
                   <span className="sr-only">Trial-Balance Ledger</span>
                 </Link>
                 <Link
-                  href="#"
+                  href="/home"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
                   <Home className="h-5 w-5" />
                   Home
                 </Link>
                 <Link
-                  href="#"
+                  href="/ledgers"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
                   <NotebookText className="h-5 w-5" />
