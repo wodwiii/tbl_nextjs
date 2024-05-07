@@ -12,6 +12,9 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import * as XLSX from 'xlsx';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable'
+
 interface Entry {
   Account_Title: string;
   _id: string;
@@ -59,6 +62,20 @@ export function JournalTable({ trialbalance }: { trialbalance: any }) {
       }
   };
 
+  const downloadPdf = () => {
+    const doc = new jsPDF();
+    const title = trialbalance.name;
+    const tableData = tb.map((entries: any) => [entries.Account_Title, entries.Debit_amount, entries.Credit_Amount]);
+    tableData.push(['Total', trialbalance.Total_debit, trialbalance.Total_credit]);
+    doc.text(title, 15, 10);
+    autoTable(doc,{
+      head: [['Account Title', 'Debit', 'Credit']],
+      body: tableData,
+      startY: 20,
+    });
+    doc.save(title+".pdf");
+  };
+  
   
   return (
     <>
@@ -101,8 +118,8 @@ export function JournalTable({ trialbalance }: { trialbalance: any }) {
           </TableRow>
         </TableFooter>
       </Table>
-      <Button className="my-4" onClick={downloadCsv}>
-          Download CSV
+      <Button className="my-4" onClick={downloadPdf}>
+          Download PDF
       </Button>
     </>
   );
